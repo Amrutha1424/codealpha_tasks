@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ConnectHub - Social Network</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-link"></i>
+        </div>
+        <span>Connect<span>Hub</span></span>
+    </div>
+
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput"
+               placeholder="Search people, posts...">
+    </div>
+
+    <div class="nav-icons">
+
+        <button onclick="showPage('home')" title="Home">
+            <i class="fa-solid fa-house"></i>
+        </button>
+
+        <button onclick="showPage('notifications')" title="Notifications"
+                class="notification-btn">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+        </button>
+
+        <button onclick="showPage('messages')" title="Messages">
+            <i class="fa-regular fa-comment"></i>
+        </button>
+
+        <div class="top-profile" onclick="showPage('profile')">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg">
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN LAYOUT ================= -->
+
+<div class="layout">
+
+    <!-- LEFT SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="profile-card">
+
+            <div class="cover"></div>
+
+            <img class="profile-picture"
+                 src="https://randomuser.me/api/portraits/women/44.jpg">
+
+            <h2>Amrutha Varshini</h2>
+            <p>@amrutha</p>
+
+            <div class="profile-stats">
+                <div>
+                    <strong>128</strong>
+                    <span>Posts</span>
+                </div>
+
+                <div>
+                    <strong>1.2K</strong>
+                    <span>Followers</span>
+                </div>
+
+                <div>
+                    <strong>356</strong>
+                    <span>Following</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <nav class="side-menu">
+
+            <button class="menu-item active"
+                    onclick="showPage('home')" id="homeBtn">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('profile')">
+                <i class="fa-regular fa-user"></i>
+                <span>My Profile</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('friends')">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Friends</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('reels')">
+                <i class="fa-solid fa-clapperboard"></i>
+                <span>Reels</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('saved')">
+                <i class="fa-regular fa-bookmark"></i>
+                <span>Saved Posts</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('notifications')">
+                <i class="fa-regular fa-bell"></i>
+                <span>Notifications</span>
+                <small>3</small>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('messages')">
+                <i class="fa-regular fa-message"></i>
+                <span>Messages</span>
+            </button>
+
+            <button class="menu-item"
+                    onclick="showPage('settings')">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            © 2026 ConnectHub
+            <br>
+            <span>Privacy · Terms</span>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="content">
+
+
+        <!-- HOME PAGE -->
+
+        <section id="homePage" class="page active-page">
+
+            <!-- STORIES -->
+
+            <div class="stories-card">
+
+                <div class="section-heading">
+                    <h2>Stories</h2>
+                    <button>See all</button>
+                </div>
+
+                <div class="stories">
+
+                    <div class="story add-story">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                        <div class="add-button">+</div>
+                        <span>Your Story</span>
+                    </div>
+
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                        <div class="story-ring"></div>
+                        <span>Rahul</span>
+                    </div>
+
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                        <div class="story-ring"></div>
+                        <span>Priya</span>
+                    </div>
+
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                        <div class="story-ring"></div>
+                        <span>Kiran</span>
+                    </div>
+
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg">
+                        <div class="story-ring"></div>
+                        <span>Sneha</span>
+                    </div>
+
+                    <div class="story">
+                        <img src="https://randomuser.me/api/portraits/men/52.jpg">
+                        <div class="story-ring"></div>
+                        <span>Varun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CREATE POST -->
+
+            <div class="create-post card">
+
+                <div class="create-top">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+                    <input type="text"
+                           id="postInput"
+                           placeholder="What's on your mind, Amrutha?">
+
+                    <button onclick="createPost()">Post</button>
+                </div>
+
+                <div class="post-options">
+
+                    <button>
+                        <i class="fa-solid fa-image"></i>
+                        Photo
+                    </button>
+
+                    <button>
+                        <i class="fa-solid fa-video"></i>
+                        Video
+                    </button>
+
+                    <button>
+                        <i class="fa-regular fa-face-smile"></i>
+                        Feeling
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- POST 1 -->
+
+            <article class="post card">
+
+                <div class="post-header">
+
+                    <div class="user-info">
+
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                        <div>
+                            <h3>Rahul Kumar</h3>
+                            <span>2 hours ago · 🌎</span>
+                        </div>
+
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <p class="post-text">
+                    Excited to start learning Full Stack Development! 🚀
+                    Looking forward to building some amazing projects.
+                </p>
+
+                <div class="post-image gradient-post">
+                    <div>
+                        <i class="fa-solid fa-code"></i>
+                        <h2>Build. Learn. Create.</h2>
+                        <p>Full Stack Development Journey</p>
+                    </div>
+                </div>
+
+                <div class="post-stats">
+                    <span>❤️ <b class="like-count">128</b> likes</span>
+                    <span>24 comments · 8 shares</span>
+                </div>
+
+                <div class="post-actions">
+
+                    <button onclick="likePost(this)">
+                        <i class="fa-regular fa-heart"></i>
+                        Like
+                    </button>
+
+                    <button onclick="openComments()">
+                        <i class="fa-regular fa-comment"></i>
+                        Comment
+                    </button>
+
+                    <button onclick="sharePost()">
+                        <i class="fa-solid fa-share"></i>
+                        Share
+                    </button>
+
+                    <button onclick="savePost(this)">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- POST 2 -->
+
+            <article class="post card">
+
+                <div class="post-header">
+
+                    <div class="user-info">
+
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+                        <div>
+                            <h3>Sneha Reddy</h3>
+                            <span>5 hours ago · 🌎</span>
+                        </div>
+
+                    </div>
+
+                    <button class="more-btn">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <p class="post-text">
+                    Today I completed my first web development project! 🎉
+                    Feeling really happy and excited.
+                </p>
+
+                <div class="project-box">
+
+                    <div class="project-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div>
+                        <h3>Project Completed!</h3>
+                        <p>My first Web Development Project</p>
+                    </div>
+
+                </div>
+
+                <div class="post-stats">
+                    <span>❤️ <b class="like-count">96</b> likes</span>
+                    <span>18 comments · 5 shares</span>
+                </div>
+
+                <div class="post-actions">
+
+                    <button onclick="likePost(this)">
+                        <i class="fa-regular fa-heart"></i>
+                        Like
+                    </button>
+
+                    <button onclick="openComments()">
+                        <i class="fa-regular fa-comment"></i>
+                        Comment
+                    </button>
+
+                    <button onclick="sharePost()">
+                        <i class="fa-solid fa-share"></i>
+                        Share
+                    </button>
+
+                    <button onclick="savePost(this)">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section id="profilePage" class="page">
+
+            <div class="profile-page card">
+
+                <div class="big-cover"></div>
+
+                <div class="profile-main">
+
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+                    <div class="profile-details">
+
+                        <h1>Amrutha Varshini</h1>
+
+                        <p>@amrutha</p>
+
+                        <p class="bio">
+                            Artificial Intelligence & Machine Learning student 🤖
+                            <br>
+                            Building projects • Learning • Growing 🚀
+                        </p>
+
+                        <div class="profile-buttons">
+                            <button class="primary-btn">
+                                <i class="fa-solid fa-pen"></i>
+                                Edit Profile
+                            </button>
+
+                            <button class="secondary-btn">
+                                <i class="fa-solid fa-share"></i>
+                                Share Profile
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-tabs">
+                    <button class="active">Posts</button>
+                    <button>About</button>
+                    <button>Friends</button>
+                    <button>Photos</button>
+                </div>
+
+            </div>
+
+            <div class="card profile-about">
+
+                <h2>About Me</h2>
+
+                <div class="about-grid">
+
+                    <div>
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>B.Tech AIML Student</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Andhra Pradesh, India</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-code"></i>
+                        <span>AI • ML • Web Development</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-calendar"></i>
+                        <span>Joined 2026</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FRIENDS ================= -->
+
+        <section id="friendsPage" class="page">
+
+            <div class="page-title">
+                <h1>Friends</h1>
+                <p>People you may know</p>
+            </div>
+
+            <div class="friends-grid">
+
+                <div class="friend-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <h3>Rahul Kumar</h3>
+                    <p>Full Stack Developer</p>
+                    <button onclick="friendAdded(this)">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Friend
+                    </button>
+                </div>
+
+                <div class="friend-card">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <h3>Priya Sharma</h3>
+                    <p>Web Developer</p>
+                    <button onclick="friendAdded(this)">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Friend
+                    </button>
+                </div>
+
+                <div class="friend-card">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <h3>Kiran</h3>
+                    <p>AI/ML Student</p>
+                    <button onclick="friendAdded(this)">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Friend
+                    </button>
+                </div>
+
+                <div class="friend-card">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg">
+                    <h3>Sneha Reddy</h3>
+                    <p>Software Engineer</p>
+                    <button onclick="friendAdded(this)">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Friend
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REELS ================= -->
+
+        <section id="reelsPage" class="page">
+
+            <div class="page-title">
+                <h1>Reels 🎬</h1>
+                <p>Short videos from your community</p>
+            </div>
+
+            <div class="reels-grid">
+
+                <div class="reel">
+                    <div class="reel-bg one">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <h3>My Coding Journey 🚀</h3>
+                    <p>❤️ 2.4K likes · 💬 120 comments</p>
+                </div>
+
+                <div class="reel">
+                    <div class="reel-bg two">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <h3>AI Project Ideas 🤖</h3>
+                    <p>❤️ 4.8K likes · 💬 231 comments</p>
+                </div>
+
+                <div class="reel">
+                    <div class="reel-bg three">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <h3>Student Life ✨</h3>
+                    <p>❤️ 1.7K likes · 💬 84 comments</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SAVED ================= -->
+
+        <section id="savedPage" class="page">
+
+            <div class="page-title">
+                <h1>Saved Posts</h1>
+                <p>Your bookmarked posts appear here</p>
+            </div>
+
+            <div class="saved-empty" id="savedContent">
+
+                <i class="fa-regular fa-bookmark"></i>
+
+                <h2>No saved posts yet</h2>
+
+                <p>
+                    Save posts you want to see later.
+                </p>
+
+                <button onclick="showPage('home')">
+                    Explore Posts
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <section id="notificationsPage" class="page">
+
+            <div class="page-title">
+                <h1>Notifications 🔔</h1>
+                <p>Stay updated with your activity</p>
+            </div>
+
+            <div class="notification-list card">
+
+                <div class="notification">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <p>
+                        <b>Rahul Kumar</b> liked your post.
+                        <span>2 min ago</span>
+                    </p>
+                </div>
+
+                <div class="notification">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <p>
+                        <b>Priya Sharma</b> commented on your post.
+                        <span>1 hour ago</span>
+                    </p>
+                </div>
+
+                <div class="notification">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <p>
+                        <b>Kiran</b> sent you a friend request.
+                        <span>3 hours ago</span>
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MESSAGES ================= -->
+
+        <section id="messagesPage" class="page">
+
+            <div class="messages-container card">
+
+                <div class="chat-list">
+
+                    <div class="messages-heading">
+                        <h2>Messages 💬</h2>
+                        <input placeholder="Search chats...">
+                    </div>
+
+                    <div class="chat active-chat"
+                         onclick="selectChat('Rahul Kumar')">
+
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                        <div>
+                            <b>Rahul Kumar</b>
+                            <p>Hey! How is your project going?</p>
+                        </div>
+
+                        <span>2m</span>
+
+                    </div>
+
+                    <div class="chat"
+                         onclick="selectChat('Priya Sharma')">
+
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+                        <div>
+                            <b>Priya Sharma</b>
+                            <p>See you tomorrow!</p>
+                        </div>
+
+                        <span>1h</span>
+
+                    </div>
+
+                    <div class="chat"
+                         onclick="selectChat('Kiran')">
+
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg">
+
+                        <div>
+                            <b>Kiran</b>
+                            <p>Check this AI project 🔥</p>
+                        </div>
+
+                        <span>3h</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-window">
+
+                    <div class="chat-header">
+
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                        <div>
+                            <h3 id="chatName">Rahul Kumar</h3>
+                            <span>🟢 Online</span>
+                        </div>
+
+                    </div>
+
+                    <div class="messages">
+
+                        <div class="message received">
+                            Hey! How is your project going?
+                        </div>
+
+                        <div class="message sent">
+                            It's going really well! 🚀
+                        </div>
+
+                        <div class="message received">
+                            That's great! Keep building.
+                        </div>
+
+                    </div>
+
+                    <div class="message-input">
+
+                        <input id="messageInput"
+                               placeholder="Type a message...">
+
+                        <button onclick="sendMessage()">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section id="settingsPage" class="page">
+
+            <div class="page-title">
+                <h1>Settings ⚙️</h1>
+                <p>Manage your ConnectHub account</p>
+            </div>
+
+            <div class="settings-card card">
+
+                <div class="setting">
+                    <div>
+                        <i class="fa-solid fa-moon"></i>
+                        <div>
+                            <b>Dark Mode</b>
+                            <p>Switch between light and dark theme</p>
+                        </div>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox" onclick="toggleDarkMode()">
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="setting">
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <div>
+                            <b>Privacy</b>
+                            <p>Control who can see your profile</p>
+                        </div>
+                    </div>
+
+                    <button class="setting-btn">Manage</button>
+                </div>
+
+                <div class="setting">
+                    <div>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <b>Security</b>
+                            <p>Manage password and security</p>
+                        </div>
+                    </div>
+
+                    <button class="setting-btn">Manage</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= RIGHT SIDEBAR ================= -->
+
+    <aside class="right-sidebar">
+
+        <div class="right-card">
+
+            <div class="right-title">
+                <h3>People You May Know</h3>
+                <a>See all</a>
+            </div>
+
+            <div class="person">
+
+                <img src="https://randomuser.me/api/portraits/men/45.jpg">
+
+                <div>
+                    <b>Kiran</b>
+                    <span>AI/ML Student</span>
+                </div>
+
+                <button onclick="friendAdded(this)">
+                    +
+                </button>
+
+            </div>
+
+            <div class="person">
+
+                <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+                <div>
+                    <b>Priya</b>
+                    <span>Web Developer</span>
+                </div>
+
+                <button onclick="friendAdded(this)">
+                    +
+                </button>
+
+            </div>
+
+            <div class="person">
+
+                <img src="https://randomuser.me/api/portraits/men/52.jpg">
+
+                <div>
+                    <b>Varun</b>
+                    <span>Software Engineer</span>
+                </div>
+
+                <button onclick="friendAdded(this)">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="right-card">
+
+            <h3>Trending Topics 🔥</h3>
+
+            <div class="trend">
+                <b>#WebDevelopment</b>
+                <span>12.4K posts</span>
+            </div>
+
+            <div class="trend">
+                <b>#ArtificialIntelligence</b>
+                <span>8.7K posts</span>
+            </div>
+
+            <div class="trend">
+                <b>#Internships</b>
+                <span>4.2K posts</span>
+            </div>
+
+            <div class="trend">
+                <b>#MachineLearning</b>
+                <span>3.8K posts</span>
+            </div>
+
+        </div>
+
+
+        <div class="right-card">
+
+            <div class="online-title">
+                <h3>Online Friends</h3>
+                <span>5 online</span>
+            </div>
+
+            <div class="online-person">
+
+                <div class="online-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <i></i>
+                </div>
+
+                <b>Rahul</b>
+
+            </div>
+
+            <div class="online-person">
+
+                <div class="online-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <i></i>
+                </div>
+
+                <b>Sneha</b>
+
+            </div>
+
+            <div class="online-person">
+
+                <div class="online-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <i></i>
+                </div>
+
+                <b>Kiran</b>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
