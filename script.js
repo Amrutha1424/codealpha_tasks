@@ -1,1016 +1,554 @@
-// ======================================================
-// CONNECTHUB - FINAL JAVASCRIPT
-// CodeAlpha Social Media Task
-// ======================================================
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* =========================
+       PAGE NAVIGATION
+    ========================= */
 
-// ======================================================
-// TOAST
-// ======================================================
+    const navItems = document.querySelectorAll(".nav-item");
+    const pages = document.querySelectorAll(".page");
 
-window.showToast = function (message) {
+    function openPage(pageName) {
 
-    let toast = document.getElementById("toast");
+        pages.forEach(page => {
+            page.classList.remove("active-page");
+        });
 
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toast";
+        const selectedPage = document.getElementById(pageName);
 
-        toast.style.position = "fixed";
-        toast.style.bottom = "30px";
-        toast.style.left = "50%";
-        toast.style.transform = "translateX(-50%)";
-        toast.style.zIndex = "99999";
-        toast.style.padding = "14px 24px";
-        toast.style.borderRadius = "30px";
-        toast.style.background = "#222";
-        toast.style.color = "#fff";
-        toast.style.fontSize = "14px";
-        toast.style.boxShadow = "0 8px 30px rgba(0,0,0,.25)";
-
-        document.body.appendChild(toast);
-    }
-
-    toast.innerText = message;
-    toast.style.display = "block";
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer = setTimeout(function () {
-        toast.style.display = "none";
-    }, 2200);
-};
-
-
-// ======================================================
-// PAGE NAVIGATION
-// ======================================================
-
-window.showPage = function (pageId, clickedItem) {
-
-    const pages = document.querySelectorAll(".app-page");
-
-    pages.forEach(function (page) {
-        page.style.display = "none";
-        page.classList.remove("active-page");
-    });
-
-    const selectedPage = document.getElementById(pageId);
-
-    if (!selectedPage) {
-        console.log("Page not found:", pageId);
-        return;
-    }
-
-    selectedPage.style.display = "block";
-    selectedPage.classList.add("active-page");
-
-    // Sidebar active item
-    document.querySelectorAll(".sidebar-menu a").forEach(function (item) {
-        item.classList.remove("active");
-    });
-
-    if (clickedItem) {
-        clickedItem.classList.add("active");
-    }
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-};
-
-
-// ======================================================
-// LIKE POST
-// ======================================================
-
-window.toggleLike = function (button) {
-
-    if (!button) return;
-
-    const icon = button.querySelector("i");
-
-    if (button.classList.contains("liked")) {
-
-        button.classList.remove("liked");
-
-        if (icon) {
-            icon.classList.remove("fa-solid");
-            icon.classList.add("fa-regular");
+        if (selectedPage) {
+            selectedPage.classList.add("active-page");
         }
 
-        showToast("Like removed");
+        navItems.forEach(item => {
+            item.classList.remove("active");
 
-    } else {
+            if (item.dataset.page === pageName) {
+                item.classList.add("active");
+            }
+        });
 
-        button.classList.add("liked");
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 
-        if (icon) {
-            icon.classList.remove("fa-regular");
-            icon.classList.add("fa-solid");
+
+    navItems.forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            const page = item.dataset.page;
+
+            openPage(page);
+
+        });
+
+    });
+
+
+    /* =========================
+       VIEW ALL BUTTONS
+    ========================= */
+
+    document.querySelectorAll("[data-page-target]").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            openPage(button.dataset.pageTarget);
+
+        });
+
+    });
+
+
+    /* =========================
+       NEW PROJECT MODAL
+    ========================= */
+
+    const modal = document.getElementById("projectModal");
+
+    const openButtons =
+        document.querySelectorAll("[data-open-modal]");
+
+    const closeModal =
+        document.getElementById("closeModal");
+
+
+    openButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            modal.classList.add("show");
+
+        });
+
+    });
+
+
+    closeModal.addEventListener("click", () => {
+
+        modal.classList.remove("show");
+
+    });
+
+
+    modal.addEventListener("click", (event) => {
+
+        if (event.target === modal) {
+
+            modal.classList.remove("show");
+
         }
 
-        showToast("Post liked ❤️");
-    }
-};
+    });
 
 
-// IMPORTANT:
-// Some of your older HTML may use likePost()
-// instead of toggleLike()
+    /* =========================
+       CREATE PROJECT
+    ========================= */
 
-window.likePost = function (button) {
-    window.toggleLike(button);
-};
+    const projectForm =
+        document.getElementById("projectForm");
 
+    projectForm.addEventListener("submit", (event) => {
 
-// ======================================================
-// COMMENT
-// ======================================================
+        event.preventDefault();
 
-window.focusComment = function (button) {
+        const name =
+            document.getElementById("projectName").value.trim();
 
-    const post = button.closest(".post-card");
-
-    if (!post) return;
-
-    const input = post.querySelector("input");
-
-    if (input) {
-        input.focus();
-        showToast("Write your comment 💬");
-    }
-};
+        const description =
+            document.getElementById("projectDescription").value.trim();
 
 
-// Older HTML support
-window.commentPost = function (button) {
-    window.focusComment(button);
-};
+        if (!name || !description) {
+
+            alert("Please enter project details.");
+
+            return;
+
+        }
 
 
-window.addComment = function (event) {
+        const projectGrid =
+            document.querySelector("#projects .project-grid");
 
-    if (event.key !== "Enter") return;
 
-    const input = event.target;
+        const newCard =
+            document.createElement("div");
 
-    const text = input.value.trim();
+        newCard.className = "project-card";
 
-    if (!text) return;
+        newCard.innerHTML = `
 
-    const post = input.closest(".post-card");
+            <div class="project-top">
 
-    if (!post) return;
+                <div class="project-icon purple-bg">
 
-    let comments =
-        post.querySelector(".comments-list");
+                    <i class="fa-solid fa-folder"></i>
 
-    if (!comments) {
+                </div>
 
-        comments = document.createElement("div");
+                <button class="more-btn">
 
-        comments.className = "comments-list";
+                    <i class="fa-solid fa-ellipsis"></i>
 
-        input.parentElement.before(comments);
-    }
+                </button>
 
-    const comment =
-        document.createElement("div");
+            </div>
 
-    comment.style.display = "flex";
-    comment.style.gap = "10px";
-    comment.style.padding = "10px 0";
 
-    comment.innerHTML = `
-        <img
-            src="https://i.pravatar.cc/50?img=47"
-            style="
-                width:35px;
-                height:35px;
-                border-radius:50%;
-            "
-        >
+            <h3>${escapeHTML(name)}</h3>
 
-        <div>
-            <strong>Amrutha Varshini</strong>
-            <p style="margin:3px 0;">
-                ${escapeHTML(text)}
+            <p>
+                ${escapeHTML(description)}
             </p>
-        </div>
-    `;
-
-    comments.appendChild(comment);
-
-    input.value = "";
-
-    showToast("Comment added 💬");
-};
 
 
-// ======================================================
-// SHARE
-// ======================================================
+            <div class="project-meta">
 
-window.sharePost = function () {
+                <span>
 
-    const text =
-        "Check out this post on ConnectHub!";
+                    <i class="fa-regular fa-calendar"></i>
 
-    if (navigator.clipboard) {
+                    New Project
 
-        navigator.clipboard.writeText(text)
-            .then(function () {
-                showToast("Post link copied 🔗");
-            })
-            .catch(function () {
-                showToast("Post shared 🔗");
-            });
-
-    } else {
-
-        showToast("Post shared 🔗");
-    }
-};
+                </span>
 
 
-// ======================================================
-// SAVE POST
-// ======================================================
+                <span class="status active">
 
-window.toggleSave = function (button) {
+                    Active
 
-    if (!button) return;
+                </span>
 
-    const icon = button.querySelector("i");
-
-    if (button.classList.contains("saved")) {
-
-        button.classList.remove("saved");
-
-        if (icon) {
-            icon.classList.remove("fa-solid");
-            icon.classList.add("fa-regular");
-        }
-
-        showToast("Removed from Saved Posts");
-
-    } else {
-
-        button.classList.add("saved");
-
-        if (icon) {
-            icon.classList.remove("fa-regular");
-            icon.classList.add("fa-solid");
-        }
-
-        showToast("Saved successfully 🔖");
-    }
-};
+            </div>
 
 
-// Older HTML support
-window.savePost = function (button) {
-    window.toggleSave(button);
-};
+            <div class="progress-label">
+
+                <span>Progress</span>
+
+                <strong>0%</strong>
+
+            </div>
 
 
-// ======================================================
-// CREATE POST
-// ======================================================
+            <div class="progress">
 
-window.createPost = function () {
-
-    const input =
-        document.getElementById("postInput");
-
-    if (!input) {
-        showToast("Post box not found");
-        return;
-    }
-
-    const text = input.value.trim();
-
-    if (!text) {
-        showToast("Write something first ✍️");
-        input.focus();
-        return;
-    }
-
-    const container =
-        document.getElementById("postsContainer");
-
-    if (!container) {
-        showToast("Posts area not found");
-        return;
-    }
-
-    const post =
-        document.createElement("article");
-
-    post.className = "post-card card";
-
-    post.innerHTML = `
-
-        <div class="post-header">
-
-            <div class="user-info">
-
-                <img
-                    src="https://i.pravatar.cc/100?img=47"
-                    class="avatar"
-                >
-
-                <div>
-                    <h4>Amrutha Varshini</h4>
-                    <p>Just now · 🌎</p>
+                <div
+                    class="purple-progress"
+                    style="width:0%">
                 </div>
 
             </div>
 
-            <button class="more-btn">
-                ⋯
-            </button>
 
-        </div>
+            <div class="project-bottom">
 
-        <p class="post-text">
-            ${escapeHTML(text)}
-        </p>
+                <div class="avatars">
 
-        <div class="post-stats">
+                    <img
+                        src="https://i.pravatar.cc/100?img=47">
 
-            <span>0 likes</span>
+                    <span>+1</span>
 
-            <span>
-                0 comments · 0 shares
-            </span>
+                </div>
 
-        </div>
+                <small>0 Tasks</small>
 
-        <div class="post-actions">
+            </div>
 
-            <button onclick="toggleLike(this)">
-                <i class="fa-regular fa-heart"></i>
-                Like
-            </button>
-
-            <button onclick="focusComment(this)">
-                <i class="fa-regular fa-comment"></i>
-                Comment
-            </button>
-
-            <button onclick="sharePost()">
-                <i class="fa-solid fa-share"></i>
-                Share
-            </button>
-
-            <button onclick="toggleSave(this)">
-                <i class="fa-regular fa-bookmark"></i>
-                Save
-            </button>
-
-        </div>
-
-        <div class="comment-box">
-
-            <img
-                src="https://i.pravatar.cc/50?img=47"
-                class="small-avatar"
-            >
-
-            <input
-                type="text"
-                placeholder="Write a comment..."
-                onkeydown="addComment(event)"
-            >
-
-        </div>
-    `;
-
-    container.prepend(post);
-
-    input.value = "";
-
-    showToast("Post published successfully 🎉");
-};
+        `;
 
 
-// ======================================================
-// PHOTO POST
-// ======================================================
-
-window.openImagePost = function () {
-
-    const imageInput =
-        document.getElementById("imageInput");
-
-    if (imageInput) {
-
-        imageInput.click();
-
-    } else {
-
-        showToast("Image upload not available");
-    }
-};
+        projectGrid.appendChild(newCard);
 
 
-document.addEventListener("DOMContentLoaded", function () {
+        projectForm.reset();
 
-    const imageInput =
-        document.getElementById("imageInput");
+        modal.classList.remove("show");
 
-    if (imageInput) {
 
-        imageInput.addEventListener(
-            "change",
-            function () {
+        alert("Project created successfully! 🎉");
 
-                const file = this.files[0];
+    });
 
-                if (!file) return;
 
-                const reader =
-                    new FileReader();
+    /* =========================
+       TASK CHECKBOXES
+    ========================= */
 
-                reader.onload = function (event) {
+    document.querySelectorAll(".task-check").forEach(check => {
 
-                    const container =
-                        document.getElementById(
-                            "postsContainer"
-                        );
+        check.addEventListener("click", () => {
 
-                    if (!container) return;
+            check.classList.toggle("done");
 
-                    const post =
-                        document.createElement("article");
+            if (check.classList.contains("done")) {
 
-                    post.className =
-                        "post-card card";
+                check.innerHTML = "✓";
 
-                    post.innerHTML = `
+            } else {
 
-                        <div class="post-header">
+                check.innerHTML = "";
 
-                            <div class="user-info">
-
-                                <img
-                                    src="https://i.pravatar.cc/100?img=47"
-                                    class="avatar"
-                                >
-
-                                <div>
-                                    <h4>Amrutha Varshini</h4>
-                                    <p>Just now · 🌎</p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <p class="post-text">
-                            Shared a new photo 📸
-                        </p>
-
-                        <img
-                            src="${event.target.result}"
-                            style="
-                                width:100%;
-                                max-height:450px;
-                                object-fit:cover;
-                                border-radius:16px;
-                                margin-top:12px;
-                            "
-                        >
-
-                        <div class="post-actions">
-
-                            <button onclick="toggleLike(this)">
-                                ❤️ Like
-                            </button>
-
-                            <button onclick="focusComment(this)">
-                                💬 Comment
-                            </button>
-
-                            <button onclick="sharePost()">
-                                ↗ Share
-                            </button>
-
-                            <button onclick="toggleSave(this)">
-                                🔖 Save
-                            </button>
-
-                        </div>
-
-                        <div class="comment-box">
-
-                            <input
-                                type="text"
-                                placeholder="Write a comment..."
-                                onkeydown="addComment(event)"
-                            >
-
-                        </div>
-                    `;
-
-                    container.prepend(post);
-
-                    showToast(
-                        "Photo posted successfully 📸"
-                    );
-                };
-
-                reader.readAsDataURL(file);
             }
-        );
-    }
 
-});
+        });
 
+    });
 
-// ======================================================
-// FRIENDS
-// ======================================================
 
-window.toggleFriend = function (button) {
+    /* =========================
+       DARK MODE
+    ========================= */
 
-    if (!button) return;
+    const themeBtn =
+        document.getElementById("themeBtn");
 
-    const text =
-        button.innerText.trim();
 
-    if (
-        text === "Add Friend" ||
-        text === "+"
-    ) {
+    themeBtn.addEventListener("click", () => {
 
-        button.innerText =
-            "Request Sent ✓";
+        document.body.classList.toggle("dark");
 
-        showToast(
-            "Friend request sent 👥"
-        );
 
-    } else if (
-        text.includes("Request")
-    ) {
+        const icon =
+            themeBtn.querySelector("i");
 
-        button.innerText =
-            "Add Friend";
 
-        showToast(
-            "Friend request cancelled"
-        );
+        if (document.body.classList.contains("dark")) {
 
-    } else {
+            icon.className =
+                "fa-regular fa-sun";
 
-        button.innerText =
-            "Add Friend";
+        } else {
 
-        showToast(
-            "Friend removed"
-        );
-    }
-};
+            icon.className =
+                "fa-regular fa-moon";
 
+        }
 
-// ======================================================
-// FRIEND SUGGESTIONS
-// ======================================================
+    });
 
-window.toggleSuggestion = function (button) {
 
-    if (!button) return;
+    /* =========================
+       SEARCH
+    ========================= */
 
-    if (
-        button.innerText.trim() === "+"
-    ) {
+    const searchInput =
+        document.getElementById("globalSearch");
 
-        button.innerText = "✓";
 
-        button.style.background =
-            "#22c55e";
+    searchInput.addEventListener("input", () => {
 
-        button.style.color =
-            "#fff";
+        const value =
+            searchInput.value.toLowerCase().trim();
 
-        showToast(
-            "Friend request sent 👥"
-        );
 
-    } else {
+        const cards =
+            document.querySelectorAll(".project-card");
 
-        button.innerText = "+";
 
-        button.style.background = "";
+        cards.forEach(card => {
 
-        button.style.color = "";
+            const text =
+                card.innerText.toLowerCase();
 
-        showToast(
-            "Request cancelled"
-        );
-    }
-};
 
+            if (text.includes(value)) {
 
-// ======================================================
-// REELS LIKE
-// ======================================================
+                card.style.display = "";
 
-window.reelLike = function (button) {
+            } else {
 
-    if (!button) return;
+                card.style.display = "none";
 
-    if (button.classList.contains("liked")) {
-
-        button.classList.remove("liked");
-
-        showToast(
-            "Reel like removed"
-        );
-
-    } else {
-
-        button.classList.add("liked");
-
-        showToast(
-            "Reel liked ❤️"
-        );
-    }
-};
-
-
-// ======================================================
-// FOLLOW
-// ======================================================
-
-document.addEventListener("click", function (event) {
-
-    const button = event.target.closest("button");
-
-    if (!button) return;
-
-    if (
-        button.innerText.trim() === "Follow"
-    ) {
-
-        button.innerText =
-            "Following ✓";
-
-        showToast(
-            "Following user ✓"
-        );
-    }
-
-});
-
-
-// ======================================================
-// NOTIFICATIONS
-// ======================================================
-
-window.markNotificationsRead =
-    function () {
-
-        document
-            .querySelectorAll(
-                ".notification-item"
-            )
-            .forEach(function (item) {
-
-                item.classList.remove(
-                    "unread"
-                );
-            });
-
-        document
-            .querySelectorAll(
-                ".menu-badge, .notification-dot"
-            )
-            .forEach(function (badge) {
-
-                badge.style.display =
-                    "none";
-            });
-
-        showToast(
-            "All notifications marked as read ✓"
-        );
-    };
-
-
-// ======================================================
-// MESSAGES
-// ======================================================
-
-window.sendMessage = function (event) {
-
-    if (
-        event &&
-        event.key &&
-        event.key !== "Enter"
-    ) {
-        return;
-    }
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-    if (!input) {
-        showToast("Message box not found");
-        return;
-    }
-
-    const text =
-        input.value.trim();
-
-    if (!text) return;
-
-    const messages =
-        document.querySelector(
-            ".chat-messages"
-        );
-
-    if (!messages) {
-        showToast("Chat area not found");
-        return;
-    }
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "message sent";
-
-    message.innerText =
-        text;
-
-    messages.appendChild(message);
-
-    input.value = "";
-
-    messages.scrollTop =
-        messages.scrollHeight;
-
-    showToast(
-        "Message sent 💬"
-    );
-
-    // Fake reply
-    setTimeout(function () {
-
-        const reply =
-            document.createElement("div");
-
-        reply.className =
-            "message received";
-
-        reply.innerText =
-            "That's great! 😊";
-
-        messages.appendChild(reply);
-
-        messages.scrollTop =
-            messages.scrollHeight;
-
-    }, 1000);
-};
-
-
-// ======================================================
-// CHAT SWITCH
-// ======================================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        document
-            .querySelectorAll(".chat")
-            .forEach(function (chat) {
-
-                chat.addEventListener(
-                    "click",
-                    function () {
-
-                        document
-                            .querySelectorAll(
-                                ".chat"
-                            )
-                            .forEach(function (item) {
-
-                                item.classList.remove(
-                                    "active-chat"
-                                );
-                            });
-
-                        chat.classList.add(
-                            "active-chat"
-                        );
-
-                        const name =
-                            chat.querySelector(
-                                "strong"
-                            );
-
-                        const image =
-                            chat.querySelector(
-                                "img"
-                            );
-
-                        const header =
-                            document.querySelector(
-                                ".chat-header"
-                            );
-
-                        if (
-                            header &&
-                            name &&
-                            image
-                        ) {
-
-                            const headerImage =
-                                header.querySelector(
-                                    "img"
-                                );
-
-                            const headerName =
-                                header.querySelector(
-                                    "strong"
-                                );
-
-                            if (headerImage) {
-                                headerImage.src =
-                                    image.src;
-                            }
-
-                            if (headerName) {
-                                headerName.innerText =
-                                    name.innerText;
-                            }
-                        }
-
-                        showToast(
-                            "Chat opened with " +
-                            name.innerText
-                        );
-                    }
-                );
-            });
-
-    }
-);
-
-
-// ======================================================
-// DARK MODE
-// ======================================================
-
-window.toggleDarkMode = function () {
-
-    const checkbox =
-        document.getElementById(
-            "darkMode"
-        );
-
-    if (!checkbox) return;
-
-    document.body.classList.toggle(
-        "dark-mode",
-        checkbox.checked
-    );
-
-    localStorage.setItem(
-        "connecthubDarkMode",
-        checkbox.checked
-    );
-
-    if (checkbox.checked) {
-
-        showToast(
-            "Dark mode enabled 🌙"
-        );
-
-    } else {
-
-        showToast(
-            "Light mode enabled ☀️"
-        );
-    }
-};
-
-
-// ======================================================
-// SEARCH
-// ======================================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
-
-        if (!searchInput) return;
-
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                const value =
-                    this.value
-                        .toLowerCase()
-                        .trim();
-
-                const items =
-                    document.querySelectorAll(
-                        ".post-card, .friend-card, .suggestion"
-                    );
-
-                items.forEach(function (item) {
-
-                    const text =
-                        item.innerText
-                            .toLowerCase();
-
-                    if (
-                        value === "" ||
-                        text.includes(value)
-                    ) {
-
-                        item.style.display = "";
-
-                    } else {
-
-                        item.style.display =
-                            "none";
-                    }
-                });
             }
-        );
-    }
-);
+
+        });
+
+    });
 
 
-// ======================================================
-// DARK MODE LOAD
-// ======================================================
+    /* =========================
+       CALENDAR
+    ========================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    const calendarGrid =
+        document.getElementById("calendarGrid");
 
-        const saved =
-            localStorage.getItem(
-                "connecthubDarkMode"
-            );
+    const monthName =
+        document.getElementById("monthName");
 
-        const checkbox =
-            document.getElementById(
-                "darkMode"
-            );
+    let currentDate = new Date(2026, 7, 1);
 
-        if (saved === "true") {
 
-            document.body.classList.add(
-                "dark-mode"
-            );
+    function generateCalendar() {
 
-            if (checkbox) {
-                checkbox.checked = true;
+        calendarGrid.innerHTML = "";
+
+
+        const year =
+            currentDate.getFullYear();
+
+        const month =
+            currentDate.getMonth();
+
+
+        const monthNames = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ];
+
+
+        monthName.textContent =
+            `${monthNames[month]} ${year}`;
+
+
+        const firstDay =
+            new Date(year, month, 1).getDay();
+
+
+        const daysInMonth =
+            new Date(year, month + 1, 0).getDate();
+
+
+        const dayNames = [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ];
+
+
+        dayNames.forEach(day => {
+
+            const heading =
+                document.createElement("div");
+
+            heading.style.fontWeight = "700";
+            heading.style.padding = "10px";
+            heading.style.color = "#858da0";
+            heading.textContent = day;
+
+            calendarGrid.appendChild(heading);
+
+        });
+
+
+        for (let i = 0; i < firstDay; i++) {
+
+            const empty =
+                document.createElement("div");
+
+            calendarGrid.appendChild(empty);
+
+        }
+
+
+        for (let day = 1; day <= daysInMonth; day++) {
+
+            const cell =
+                document.createElement("div");
+
+            cell.className = "calendar-day";
+
+
+            const number =
+                document.createElement("strong");
+
+            number.textContent = day;
+
+
+            cell.appendChild(number);
+
+
+            if (
+                day === 20 ||
+                day === 22 ||
+                day === 25 ||
+                day === 30
+            ) {
+
+                cell.classList.add("event");
+
+                const event =
+                    document.createElement("small");
+
+                event.textContent =
+                    day === 20
+                        ? "Login Design"
+                        : day === 22
+                            ? "DB Schema"
+                            : day === 25
+                                ? "Documentation"
+                                : "Project Review";
+
+
+                cell.appendChild(event);
+
             }
+
+
+            calendarGrid.appendChild(cell);
+
         }
 
     }
-);
 
 
-// ======================================================
-// HELPER
-// ======================================================
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-}
+    generateCalendar();
 
 
-// ======================================================
-// TEST MESSAGE
-// ======================================================
+    document
+        .getElementById("prevMonth")
+        .addEventListener("click", () => {
 
-console.log(
-    "✅ ConnectHub script.js loaded successfully"
-);
+            currentDate.setMonth(
+                currentDate.getMonth() - 1
+            );
+
+            generateCalendar();
+
+        });
+
+
+    document
+        .getElementById("nextMonth")
+        .addEventListener("click", () => {
+
+            currentDate.setMonth(
+                currentDate.getMonth() + 1
+            );
+
+            generateCalendar();
+
+        });
+
+
+    /* =========================
+       KEYBOARD SEARCH
+    ========================= */
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "k"
+        ) {
+
+            event.preventDefault();
+
+            searchInput.focus();
+
+        }
+
+    });
+
+
+    /* =========================
+       ESCAPE MODAL
+    ========================= */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+
+    /* =========================
+       HTML ESCAPE
+    ========================= */
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+    }
+
+});

@@ -1,949 +1,1154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ConnectHub - Social Network</title>
+    <title>ProjectFlow - Workspace</title>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
-<header class="navbar">
-
-    <div class="logo">
-        <div class="logo-icon">
-            <i class="fa-solid fa-link"></i>
-        </div>
-        <span>Connect<span>Hub</span></span>
-    </div>
-
-    <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput"
-               placeholder="Search people, posts...">
-    </div>
-
-    <div class="nav-icons">
-
-        <button onclick="showPage('home')" title="Home">
-            <i class="fa-solid fa-house"></i>
-        </button>
-
-        <button onclick="showPage('notifications')" title="Notifications"
-                class="notification-btn">
-            <i class="fa-regular fa-bell"></i>
-            <span class="badge">3</span>
-        </button>
-
-        <button onclick="showPage('messages')" title="Messages">
-            <i class="fa-regular fa-comment"></i>
-        </button>
-
-        <div class="top-profile" onclick="showPage('profile')">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg">
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- ================= MAIN LAYOUT ================= -->
-
-<div class="layout">
-
-    <!-- LEFT SIDEBAR -->
-
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
-        <div class="profile-card">
-
-            <div class="cover"></div>
-
-            <img class="profile-picture"
-                 src="https://randomuser.me/api/portraits/women/44.jpg">
-
-            <h2>Amrutha Varshini</h2>
-            <p>@amrutha</p>
-
-            <div class="profile-stats">
-                <div>
-                    <strong>128</strong>
-                    <span>Posts</span>
-                </div>
-
-                <div>
-                    <strong>1.2K</strong>
-                    <span>Followers</span>
-                </div>
-
-                <div>
-                    <strong>356</strong>
-                    <span>Following</span>
-                </div>
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-layer-group"></i>
             </div>
+
+            <div>
+                <h2>ProjectFlow</h2>
+                <span>Workspace</span>
+            </div>
+        </div>
+
+        <!-- WORKSPACE -->
+        <div class="workspace-box">
+
+            <div class="workspace-avatar">A</div>
+
+            <div class="workspace-info">
+                <strong>Amrutha's Workspace</strong>
+                <span>Personal Workspace</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
 
         </div>
 
 
-        <!-- MENU -->
+        <div class="menu-title">
+            MAIN MENU
+        </div>
 
-        <nav class="side-menu">
+        <nav class="sidebar-menu">
 
-            <button class="menu-item active"
-                    onclick="showPage('home')" id="homeBtn">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
+            <button class="nav-item active" data-page="dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('profile')">
-                <i class="fa-regular fa-user"></i>
-                <span>My Profile</span>
+            <button class="nav-item" data-page="projects">
+                <i class="fa-solid fa-folder"></i>
+                <span>Projects</span>
+                <b>4</b>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('friends')">
-                <i class="fa-solid fa-user-group"></i>
-                <span>Friends</span>
+            <button class="nav-item" data-page="tasks">
+                <i class="fa-solid fa-list-check"></i>
+                <span>My Tasks</span>
+                <b>8</b>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('reels')">
-                <i class="fa-solid fa-clapperboard"></i>
-                <span>Reels</span>
+            <button class="nav-item" data-page="team">
+                <i class="fa-solid fa-users"></i>
+                <span>Team</span>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('saved')">
-                <i class="fa-regular fa-bookmark"></i>
-                <span>Saved Posts</span>
+            <button class="nav-item" data-page="calendar">
+                <i class="fa-regular fa-calendar"></i>
+                <span>Calendar</span>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('notifications')">
-                <i class="fa-regular fa-bell"></i>
-                <span>Notifications</span>
-                <small>3</small>
+        </nav>
+
+
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <button class="nav-item" data-page="reports">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Reports</span>
             </button>
 
-            <button class="menu-item"
-                    onclick="showPage('messages')">
-                <i class="fa-regular fa-message"></i>
-                <span>Messages</span>
-            </button>
-
-            <button class="menu-item"
-                    onclick="showPage('settings')">
+            <button class="nav-item" data-page="settings">
                 <i class="fa-solid fa-gear"></i>
                 <span>Settings</span>
             </button>
 
         </nav>
 
-        <div class="sidebar-footer">
-            © 2026 ConnectHub
-            <br>
-            <span>Privacy · Terms</span>
+
+        <!-- UPGRADE -->
+        <div class="upgrade-box">
+
+            <div class="upgrade-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+
+            <h3>Upgrade Workspace</h3>
+
+            <p>
+                Unlock more powerful project features.
+            </p>
+
+            <button>
+                Upgrade
+            </button>
+
         </div>
 
     </aside>
 
 
-    <!-- ================= CONTENT ================= -->
+    <!-- MAIN AREA -->
+    <main class="main">
 
-    <main class="content">
+        <!-- TOPBAR -->
+        <header class="topbar">
 
+            <div class="search-box">
 
-        <!-- HOME PAGE -->
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-        <section id="homePage" class="page active-page">
+                <input
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Search projects, tasks...">
 
-            <!-- STORIES -->
-
-            <div class="stories-card">
-
-                <div class="section-heading">
-                    <h2>Stories</h2>
-                    <button>See all</button>
-                </div>
-
-                <div class="stories">
-
-                    <div class="story add-story">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg">
-                        <div class="add-button">+</div>
-                        <span>Your Story</span>
-                    </div>
-
-                    <div class="story">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                        <div class="story-ring"></div>
-                        <span>Rahul</span>
-                    </div>
-
-                    <div class="story">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
-                        <div class="story-ring"></div>
-                        <span>Priya</span>
-                    </div>
-
-                    <div class="story">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg">
-                        <div class="story-ring"></div>
-                        <span>Kiran</span>
-                    </div>
-
-                    <div class="story">
-                        <img src="https://randomuser.me/api/portraits/women/12.jpg">
-                        <div class="story-ring"></div>
-                        <span>Sneha</span>
-                    </div>
-
-                    <div class="story">
-                        <img src="https://randomuser.me/api/portraits/men/52.jpg">
-                        <div class="story-ring"></div>
-                        <span>Varun</span>
-                    </div>
-
-                </div>
+                <span>Ctrl K</span>
 
             </div>
 
 
-            <!-- CREATE POST -->
-
-            <div class="create-post card">
-
-                <div class="create-top">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
-
-                    <input type="text"
-                           id="postInput"
-                           placeholder="What's on your mind, Amrutha?">
-
-                    <button onclick="createPost()">Post</button>
-                </div>
-
-                <div class="post-options">
-
-                    <button>
-                        <i class="fa-solid fa-image"></i>
-                        Photo
-                    </button>
-
-                    <button>
-                        <i class="fa-solid fa-video"></i>
-                        Video
-                    </button>
-
-                    <button>
-                        <i class="fa-regular fa-face-smile"></i>
-                        Feeling
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- POST 1 -->
-
-            <article class="post card">
-
-                <div class="post-header">
-
-                    <div class="user-info">
-
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
-
-                        <div>
-                            <h3>Rahul Kumar</h3>
-                            <span>2 hours ago · 🌎</span>
-                        </div>
-
-                    </div>
-
-                    <button class="more-btn">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-
-                </div>
-
-                <p class="post-text">
-                    Excited to start learning Full Stack Development! 🚀
-                    Looking forward to building some amazing projects.
-                </p>
-
-                <div class="post-image gradient-post">
-                    <div>
-                        <i class="fa-solid fa-code"></i>
-                        <h2>Build. Learn. Create.</h2>
-                        <p>Full Stack Development Journey</p>
-                    </div>
-                </div>
-
-                <div class="post-stats">
-                    <span>❤️ <b class="like-count">128</b> likes</span>
-                    <span>24 comments · 8 shares</span>
-                </div>
-
-                <div class="post-actions">
-
-                    <button onclick="likePost(this)">
-                        <i class="fa-regular fa-heart"></i>
-                        Like
-                    </button>
-
-                    <button onclick="openComments()">
-                        <i class="fa-regular fa-comment"></i>
-                        Comment
-                    </button>
-
-                    <button onclick="sharePost()">
-                        <i class="fa-solid fa-share"></i>
-                        Share
-                    </button>
-
-                    <button onclick="savePost(this)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- POST 2 -->
-
-            <article class="post card">
-
-                <div class="post-header">
-
-                    <div class="user-info">
-
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
-
-                        <div>
-                            <h3>Sneha Reddy</h3>
-                            <span>5 hours ago · 🌎</span>
-                        </div>
-
-                    </div>
-
-                    <button class="more-btn">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </button>
-
-                </div>
-
-                <p class="post-text">
-                    Today I completed my first web development project! 🎉
-                    Feeling really happy and excited.
-                </p>
-
-                <div class="project-box">
-
-                    <div class="project-icon">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-
-                    <div>
-                        <h3>Project Completed!</h3>
-                        <p>My first Web Development Project</p>
-                    </div>
-
-                </div>
-
-                <div class="post-stats">
-                    <span>❤️ <b class="like-count">96</b> likes</span>
-                    <span>18 comments · 5 shares</span>
-                </div>
-
-                <div class="post-actions">
-
-                    <button onclick="likePost(this)">
-                        <i class="fa-regular fa-heart"></i>
-                        Like
-                    </button>
-
-                    <button onclick="openComments()">
-                        <i class="fa-regular fa-comment"></i>
-                        Comment
-                    </button>
-
-                    <button onclick="sharePost()">
-                        <i class="fa-solid fa-share"></i>
-                        Share
-                    </button>
-
-                    <button onclick="savePost(this)">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-
-                </div>
-
-            </article>
-
-        </section>
-
-
-        <!-- ================= PROFILE ================= -->
-
-        <section id="profilePage" class="page">
-
-            <div class="profile-page card">
-
-                <div class="big-cover"></div>
-
-                <div class="profile-main">
-
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
-
-                    <div class="profile-details">
-
-                        <h1>Amrutha Varshini</h1>
-
-                        <p>@amrutha</p>
-
-                        <p class="bio">
-                            Artificial Intelligence & Machine Learning student 🤖
-                            <br>
-                            Building projects • Learning • Growing 🚀
-                        </p>
-
-                        <div class="profile-buttons">
-                            <button class="primary-btn">
-                                <i class="fa-solid fa-pen"></i>
-                                Edit Profile
-                            </button>
-
-                            <button class="secondary-btn">
-                                <i class="fa-solid fa-share"></i>
-                                Share Profile
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="profile-tabs">
-                    <button class="active">Posts</button>
-                    <button>About</button>
-                    <button>Friends</button>
-                    <button>Photos</button>
-                </div>
-
-            </div>
-
-            <div class="card profile-about">
-
-                <h2>About Me</h2>
-
-                <div class="about-grid">
-
-                    <div>
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <span>B.Tech AIML Student</span>
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Andhra Pradesh, India</span>
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-code"></i>
-                        <span>AI • ML • Web Development</span>
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-calendar"></i>
-                        <span>Joined 2026</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= FRIENDS ================= -->
-
-        <section id="friendsPage" class="page">
-
-            <div class="page-title">
-                <h1>Friends</h1>
-                <p>People you may know</p>
-            </div>
-
-            <div class="friends-grid">
-
-                <div class="friend-card">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                    <h3>Rahul Kumar</h3>
-                    <p>Full Stack Developer</p>
-                    <button onclick="friendAdded(this)">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Add Friend
-                    </button>
-                </div>
-
-                <div class="friend-card">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
-                    <h3>Priya Sharma</h3>
-                    <p>Web Developer</p>
-                    <button onclick="friendAdded(this)">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Add Friend
-                    </button>
-                </div>
-
-                <div class="friend-card">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
-                    <h3>Kiran</h3>
-                    <p>AI/ML Student</p>
-                    <button onclick="friendAdded(this)">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Add Friend
-                    </button>
-                </div>
-
-                <div class="friend-card">
-                    <img src="https://randomuser.me/api/portraits/women/12.jpg">
-                    <h3>Sneha Reddy</h3>
-                    <p>Software Engineer</p>
-                    <button onclick="friendAdded(this)">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Add Friend
-                    </button>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= REELS ================= -->
-
-        <section id="reelsPage" class="page">
-
-            <div class="page-title">
-                <h1>Reels 🎬</h1>
-                <p>Short videos from your community</p>
-            </div>
-
-            <div class="reels-grid">
-
-                <div class="reel">
-                    <div class="reel-bg one">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <h3>My Coding Journey 🚀</h3>
-                    <p>❤️ 2.4K likes · 💬 120 comments</p>
-                </div>
-
-                <div class="reel">
-                    <div class="reel-bg two">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <h3>AI Project Ideas 🤖</h3>
-                    <p>❤️ 4.8K likes · 💬 231 comments</p>
-                </div>
-
-                <div class="reel">
-                    <div class="reel-bg three">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <h3>Student Life ✨</h3>
-                    <p>❤️ 1.7K likes · 💬 84 comments</p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= SAVED ================= -->
-
-        <section id="savedPage" class="page">
-
-            <div class="page-title">
-                <h1>Saved Posts</h1>
-                <p>Your bookmarked posts appear here</p>
-            </div>
-
-            <div class="saved-empty" id="savedContent">
-
-                <i class="fa-regular fa-bookmark"></i>
-
-                <h2>No saved posts yet</h2>
-
-                <p>
-                    Save posts you want to see later.
-                </p>
-
-                <button onclick="showPage('home')">
-                    Explore Posts
+            <div class="top-actions">
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <small></small>
                 </button>
 
-            </div>
+                <button class="icon-btn" id="themeBtn">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
 
-        </section>
+                <div class="profile-mini">
 
+                    <img
+                        src="https://i.pravatar.cc/100?img=47"
+                        alt="Amrutha">
 
-        <!-- ================= NOTIFICATIONS ================= -->
+                    <div>
+                        <strong>Amrutha</strong>
+                        <span>Admin</span>
+                    </div>
 
-        <section id="notificationsPage" class="page">
+                    <i class="fa-solid fa-chevron-down"></i>
 
-            <div class="page-title">
-                <h1>Notifications 🔔</h1>
-                <p>Stay updated with your activity</p>
-            </div>
-
-            <div class="notification-list card">
-
-                <div class="notification">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                    <p>
-                        <b>Rahul Kumar</b> liked your post.
-                        <span>2 min ago</span>
-                    </p>
-                </div>
-
-                <div class="notification">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
-                    <p>
-                        <b>Priya Sharma</b> commented on your post.
-                        <span>1 hour ago</span>
-                    </p>
-                </div>
-
-                <div class="notification">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
-                    <p>
-                        <b>Kiran</b> sent you a friend request.
-                        <span>3 hours ago</span>
-                    </p>
                 </div>
 
             </div>
 
-        </section>
+        </header>
 
 
-        <!-- ================= MESSAGES ================= -->
+        <!-- CONTENT -->
+        <div class="content">
 
-        <section id="messagesPage" class="page">
 
-            <div class="messages-container card">
+            <!-- ================= DASHBOARD ================= -->
 
-                <div class="chat-list">
+            <section class="page active-page" id="dashboard">
 
-                    <div class="messages-heading">
-                        <h2>Messages 💬</h2>
-                        <input placeholder="Search chats...">
+                <div class="welcome-row">
+
+                    <div>
+                        <h1>Good evening, Amrutha 👋</h1>
+                        <p>Here's what's happening with your projects today.</p>
                     </div>
 
-                    <div class="chat active-chat"
-                         onclick="selectChat('Rahul Kumar')">
+                    <button class="primary-btn" data-open-modal>
+                        <i class="fa-solid fa-plus"></i>
+                        New Project
+                    </button>
 
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                </div>
 
-                        <div>
-                            <b>Rahul Kumar</b>
-                            <p>Hey! How is your project going?</p>
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-folder-open"></i>
                         </div>
 
-                        <span>2m</span>
+                        <div>
+                            <span>Total Projects</span>
+                            <h2>4</h2>
+                            <small class="positive">
+                                ↑ 12% this month
+                            </small>
+                        </div>
 
                     </div>
 
-                    <div class="chat"
-                         onclick="selectChat('Priya Sharma')">
 
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <div class="stat-card">
 
-                        <div>
-                            <b>Priya Sharma</b>
-                            <p>See you tomorrow!</p>
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-list-check"></i>
                         </div>
 
-                        <span>1h</span>
+                        <div>
+                            <span>Tasks Completed</span>
+                            <h2>24</h2>
+                            <small class="positive">
+                                ↑ 8% this week
+                            </small>
+                        </div>
 
                     </div>
 
-                    <div class="chat"
-                         onclick="selectChat('Kiran')">
 
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <div class="stat-card">
 
-                        <div>
-                            <b>Kiran</b>
-                            <p>Check this AI project 🔥</p>
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-users"></i>
                         </div>
 
-                        <span>3h</span>
+                        <div>
+                            <span>Team Members</span>
+                            <h2>12</h2>
+                            <small class="positive">
+                                ↑ 15% this month
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon orange">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <div>
+                            <span>Pending Tasks</span>
+                            <h2>8</h2>
+                            <small class="warning">
+                                Need attention
+                            </small>
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <div class="chat-window">
+                <!-- PROJECTS -->
 
-                    <div class="chat-header">
+                <div class="section-header">
 
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <div>
+                        <h2>My Projects</h2>
+                        <p>Track your active projects and progress.</p>
+                    </div>
 
-                        <div>
-                            <h3 id="chatName">Rahul Kumar</h3>
-                            <span>🟢 Online</span>
+                    <button class="view-btn" data-page-target="projects">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="project-grid">
+
+                    <!-- PROJECT 1 -->
+
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon purple-bg">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <h3>AIML Final Year Project</h3>
+
+                        <p>
+                            AI-powered intelligent application development.
+                        </p>
+
+                        <div class="project-meta">
+
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 20 - Sep 30
+                            </span>
+
+                            <span class="status active">
+                                Active
+                            </span>
+
+                        </div>
+
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>75%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width:75%" class="purple-progress"></div>
+                        </div>
+
+                        <div class="project-bottom">
+
+                            <div class="avatars">
+
+                                <img src="https://i.pravatar.cc/100?img=12">
+                                <img src="https://i.pravatar.cc/100?img=32">
+
+                                <span>+2</span>
+
+                            </div>
+
+                            <small>8 Tasks</small>
+
                         </div>
 
                     </div>
 
-                    <div class="messages">
 
-                        <div class="message received">
-                            Hey! How is your project going?
+                    <!-- PROJECT 2 -->
+
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon blue-bg">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
                         </div>
 
-                        <div class="message sent">
-                            It's going really well! 🚀
+                        <h3>E-Commerce Store</h3>
+
+                        <p>
+                            Modern responsive online shopping platform.
+                        </p>
+
+                        <div class="project-meta">
+
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 15 - Sep 10
+                            </span>
+
+                            <span class="status active">
+                                Active
+                            </span>
+
                         </div>
 
-                        <div class="message received">
-                            That's great! Keep building.
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>60%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width:60%" class="blue-progress"></div>
+                        </div>
+
+                        <div class="project-bottom">
+
+                            <div class="avatars">
+
+                                <img src="https://i.pravatar.cc/100?img=45">
+                                <img src="https://i.pravatar.cc/100?img=47">
+
+                                <span>+3</span>
+
+                            </div>
+
+                            <small>6 Tasks</small>
+
                         </div>
 
                     </div>
 
-                    <div class="message-input">
 
-                        <input id="messageInput"
-                               placeholder="Type a message...">
+                    <!-- PROJECT 3 -->
 
-                        <button onclick="sendMessage()">
-                            <i class="fa-solid fa-paper-plane"></i>
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon pink-bg">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <h3>Social Media App</h3>
+
+                        <p>
+                            Interactive social networking platform.
+                        </p>
+
+                        <div class="project-meta">
+
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 18 - Oct 01
+                            </span>
+
+                            <span class="status active">
+                                Active
+                            </span>
+
+                        </div>
+
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>45%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div style="width:45%" class="pink-progress"></div>
+                        </div>
+
+                        <div class="project-bottom">
+
+                            <div class="avatars">
+
+                                <img src="https://i.pravatar.cc/100?img=49">
+
+                                <span>+1</span>
+
+                            </div>
+
+                            <small>5 Tasks</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT TASKS -->
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Recent Tasks</h2>
+                        <p>Your latest assigned tasks.</p>
+                    </div>
+
+                    <button class="view-btn" data-page-target="tasks">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="task-table">
+
+                    <div class="table-head">
+                        <span>TASK</span>
+                        <span>PROJECT</span>
+                        <span>ASSIGNEE</span>
+                        <span>DUE DATE</span>
+                        <span>STATUS</span>
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div class="task-name">
+                            <span class="check done">
+                                ✓
+                            </span>
+                            Design login page
+                        </div>
+
+                        <span>AIML Project</span>
+
+                        <span>Amrutha</span>
+
+                        <span>Aug 20, 2026</span>
+
+                        <span class="task-status completed">
+                            Completed
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div class="task-name">
+
+                            <button class="check task-check">
+                            </button>
+
+                            Create database schema
+
+                        </div>
+
+                        <span>AIML Project</span>
+
+                        <span>Rahul</span>
+
+                        <span>Aug 22, 2026</span>
+
+                        <span class="task-status progress-status">
+                            In Progress
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div class="task-name">
+
+                            <button class="check task-check">
+                            </button>
+
+                            Prepare documentation
+
+                        </div>
+
+                        <span>E-Commerce Store</span>
+
+                        <span>Priya</span>
+
+                        <span>Aug 25, 2026</span>
+
+                        <span class="task-status todo-status">
+                            To Do
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= PROJECTS ================= -->
+
+            <section class="page" id="projects">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Projects</h1>
+                        <p>Manage and track all your projects.</p>
+                    </div>
+
+                    <button class="primary-btn" data-open-modal>
+                        <i class="fa-solid fa-plus"></i>
+                        New Project
+                    </button>
+
+                </div>
+
+
+                <div class="project-grid">
+
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon purple-bg">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <h3>AIML Final Year Project</h3>
+
+                        <p>AI-powered intelligent application development.</p>
+
+                        <div class="project-meta">
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 20 - Sep 30
+                            </span>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>75%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="purple-progress" style="width:75%"></div>
+                        </div>
+
+                        <div class="project-bottom">
+                            <div class="avatars">
+                                <img src="https://i.pravatar.cc/100?img=12">
+                                <img src="https://i.pravatar.cc/100?img=32">
+                                <span>+2</span>
+                            </div>
+
+                            <small>8 Tasks</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon blue-bg">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <h3>E-Commerce Store</h3>
+
+                        <p>Modern responsive online shopping platform.</p>
+
+                        <div class="project-meta">
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 15 - Sep 10
+                            </span>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>60%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="blue-progress" style="width:60%"></div>
+                        </div>
+
+                        <div class="project-bottom">
+                            <div class="avatars">
+                                <img src="https://i.pravatar.cc/100?img=45">
+                                <img src="https://i.pravatar.cc/100?img=47">
+                                <span>+3</span>
+                            </div>
+
+                            <small>6 Tasks</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-top">
+
+                            <div class="project-icon pink-bg">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+
+                            <button class="more-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <h3>Social Media App</h3>
+
+                        <p>Interactive social networking platform.</p>
+
+                        <div class="project-meta">
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 18 - Oct 01
+                            </span>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <strong>45%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="pink-progress" style="width:45%"></div>
+                        </div>
+
+                        <div class="project-bottom">
+                            <div class="avatars">
+                                <img src="https://i.pravatar.cc/100?img=49">
+                                <span>+1</span>
+                            </div>
+
+                            <small>5 Tasks</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= TASKS ================= -->
+
+            <section class="page" id="tasks">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>My Tasks</h1>
+                        <p>Manage your daily tasks and deadlines.</p>
+                    </div>
+
+                    <button class="primary-btn" id="addTaskBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Task
+                    </button>
+
+                </div>
+
+
+                <div class="task-board">
+
+                    <div class="task-column">
+
+                        <div class="column-title">
+                            <h3>To Do</h3>
+                            <span>3</span>
+                        </div>
+
+                        <div class="task-card">
+                            <h4>Prepare project documentation</h4>
+                            <p>E-Commerce Store</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 25</span>
+                                <img src="https://i.pravatar.cc/100?img=47">
+                            </div>
+                        </div>
+
+                        <div class="task-card">
+                            <h4>Design dashboard</h4>
+                            <p>AIML Project</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 27</span>
+                                <img src="https://i.pravatar.cc/100?img=12">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="task-column">
+
+                        <div class="column-title">
+                            <h3>In Progress</h3>
+                            <span>2</span>
+                        </div>
+
+                        <div class="task-card">
+                            <h4>Create database schema</h4>
+                            <p>AIML Project</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 22</span>
+                                <img src="https://i.pravatar.cc/100?img=32">
+                            </div>
+                        </div>
+
+                        <div class="task-card">
+                            <h4>Build product page</h4>
+                            <p>E-Commerce Store</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 24</span>
+                                <img src="https://i.pravatar.cc/100?img=45">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="task-column">
+
+                        <div class="column-title">
+                            <h3>Completed</h3>
+                            <span>3</span>
+                        </div>
+
+                        <div class="task-card completed-task">
+                            <h4>Design login page</h4>
+                            <p>AIML Project</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 20</span>
+                                <img src="https://i.pravatar.cc/100?img=47">
+                            </div>
+                        </div>
+
+                        <div class="task-card completed-task">
+                            <h4>Create homepage</h4>
+                            <p>Social Media App</p>
+                            <div class="task-card-bottom">
+                                <span>Aug 19</span>
+                                <img src="https://i.pravatar.cc/100?img=49">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= TEAM ================= -->
+
+            <section class="page" id="team">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Team</h1>
+                        <p>Collaborate with your workspace members.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Invite Member
+                    </button>
+
+                </div>
+
+
+                <div class="team-grid">
+
+                    <div class="member-card">
+
+                        <img src="https://i.pravatar.cc/150?img=47">
+
+                        <h3>Amrutha Varshini</h3>
+                        <p>Admin · AIML</p>
+
+                        <span class="online">
+                            ● Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="member-card">
+
+                        <img src="https://i.pravatar.cc/150?img=12">
+
+                        <h3>Rahul Kumar</h3>
+                        <p>Developer</p>
+
+                        <span class="online">
+                            ● Online
+                        </span>
+
+                    </div>
+
+
+                    <div class="member-card">
+
+                        <img src="https://i.pravatar.cc/150?img=45">
+
+                        <h3>Priya Sharma</h3>
+                        <p>UI/UX Designer</p>
+
+                        <span class="offline">
+                            ● Offline
+                        </span>
+
+                    </div>
+
+
+                    <div class="member-card">
+
+                        <img src="https://i.pravatar.cc/150?img=32">
+
+                        <h3>Kiran</h3>
+                        <p>AI/ML Student</p>
+
+                        <span class="online">
+                            ● Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CALENDAR ================= -->
+
+            <section class="page" id="calendar">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Calendar</h1>
+                        <p>Keep track of important project deadlines.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="calendar-card">
+
+                    <div class="calendar-header">
+
+                        <button id="prevMonth">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <h2 id="monthName">August 2026</h2>
+
+                        <button id="nextMonth">
+                            <i class="fa-solid fa-chevron-right"></i>
                         </button>
 
                     </div>
 
+                    <div class="calendar-grid" id="calendarGrid"></div>
+
                 </div>
 
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- ================= SETTINGS ================= -->
 
-        <section id="settingsPage" class="page">
+            <!-- ================= REPORTS ================= -->
 
-            <div class="page-title">
-                <h1>Settings ⚙️</h1>
-                <p>Manage your ConnectHub account</p>
-            </div>
+            <section class="page" id="reports">
 
-            <div class="settings-card card">
+                <div class="page-heading">
 
-                <div class="setting">
                     <div>
-                        <i class="fa-solid fa-moon"></i>
-                        <div>
-                            <b>Dark Mode</b>
-                            <p>Switch between light and dark theme</p>
-                        </div>
+                        <h1>Reports</h1>
+                        <p>Analyze your workspace performance.</p>
                     </div>
 
-                    <label class="switch">
-                        <input type="checkbox" onclick="toggleDarkMode()">
-                        <span></span>
-                    </label>
                 </div>
 
-                <div class="setting">
-                    <div>
-                        <i class="fa-solid fa-lock"></i>
-                        <div>
-                            <b>Privacy</b>
-                            <p>Control who can see your profile</p>
+
+                <div class="report-grid">
+
+                    <div class="report-card">
+
+                        <span>Project Completion</span>
+
+                        <h2>72%</h2>
+
+                        <div class="big-progress">
+                            <div style="width:72%"></div>
                         </div>
+
+                        <small>↑ 12% compared to last month</small>
+
                     </div>
 
-                    <button class="setting-btn">Manage</button>
-                </div>
 
-                <div class="setting">
-                    <div>
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <div>
-                            <b>Security</b>
-                            <p>Manage password and security</p>
+                    <div class="report-card">
+
+                        <span>Tasks Completed</span>
+
+                        <h2>86</h2>
+
+                        <div class="chart-bars">
+
+                            <i style="height:40%"></i>
+                            <i style="height:65%"></i>
+                            <i style="height:50%"></i>
+                            <i style="height:80%"></i>
+                            <i style="height:70%"></i>
+                            <i style="height:95%"></i>
+                            <i style="height:75%"></i>
+
                         </div>
+
                     </div>
 
-                    <button class="setting-btn">Manage</button>
                 </div>
 
-            </div>
+            </section>
 
-        </section>
+
+
+            <!-- ================= SETTINGS ================= -->
+
+            <section class="page" id="settings">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Settings</h1>
+                        <p>Manage your workspace preferences.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Email Notifications</h3>
+                            <p>Receive updates about your projects.</p>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Task Reminders</h3>
+                            <p>Get reminders before task deadlines.</p>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Public Workspace</h3>
+                            <p>Allow others to discover your workspace.</p>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
 
 
-    <!-- ================= RIGHT SIDEBAR ================= -->
 
-    <aside class="right-sidebar">
+    <!-- NEW PROJECT MODAL -->
 
-        <div class="right-card">
+    <div class="modal" id="projectModal">
 
-            <div class="right-title">
-                <h3>People You May Know</h3>
-                <a>See all</a>
-            </div>
+        <div class="modal-box">
 
-            <div class="person">
+            <button class="close-modal" id="closeModal">
+                ×
+            </button>
 
-                <img src="https://randomuser.me/api/portraits/men/45.jpg">
+            <h2>Create New Project</h2>
 
-                <div>
-                    <b>Kiran</b>
-                    <span>AI/ML Student</span>
-                </div>
+            <p>Add a new project to your workspace.</p>
 
-                <button onclick="friendAdded(this)">
-                    +
+            <form id="projectForm">
+
+                <label>Project Name</label>
+
+                <input
+                    id="projectName"
+                    type="text"
+                    placeholder="Enter project name"
+                    required>
+
+                <label>Description</label>
+
+                <textarea
+                    id="projectDescription"
+                    placeholder="Project description"
+                    required></textarea>
+
+                <button class="primary-btn" type="submit">
+                    Create Project
                 </button>
 
-            </div>
-
-            <div class="person">
-
-                <img src="https://randomuser.me/api/portraits/women/65.jpg">
-
-                <div>
-                    <b>Priya</b>
-                    <span>Web Developer</span>
-                </div>
-
-                <button onclick="friendAdded(this)">
-                    +
-                </button>
-
-            </div>
-
-            <div class="person">
-
-                <img src="https://randomuser.me/api/portraits/men/52.jpg">
-
-                <div>
-                    <b>Varun</b>
-                    <span>Software Engineer</span>
-                </div>
-
-                <button onclick="friendAdded(this)">
-                    +
-                </button>
-
-            </div>
+            </form>
 
         </div>
 
-
-        <div class="right-card">
-
-            <h3>Trending Topics 🔥</h3>
-
-            <div class="trend">
-                <b>#WebDevelopment</b>
-                <span>12.4K posts</span>
-            </div>
-
-            <div class="trend">
-                <b>#ArtificialIntelligence</b>
-                <span>8.7K posts</span>
-            </div>
-
-            <div class="trend">
-                <b>#Internships</b>
-                <span>4.2K posts</span>
-            </div>
-
-            <div class="trend">
-                <b>#MachineLearning</b>
-                <span>3.8K posts</span>
-            </div>
-
-        </div>
+    </div>
 
 
-        <div class="right-card">
-
-            <div class="online-title">
-                <h3>Online Friends</h3>
-                <span>5 online</span>
-            </div>
-
-            <div class="online-person">
-
-                <div class="online-avatar">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                    <i></i>
-                </div>
-
-                <b>Rahul</b>
-
-            </div>
-
-            <div class="online-person">
-
-                <div class="online-avatar">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
-                    <i></i>
-                </div>
-
-                <b>Sneha</b>
-
-            </div>
-
-            <div class="online-person">
-
-                <div class="online-avatar">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
-                    <i></i>
-                </div>
-
-                <b>Kiran</b>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-</div>
-
-
-<!-- TOAST -->
-
-<div id="toast"></div>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
