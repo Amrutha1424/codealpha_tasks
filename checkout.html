@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - Amrutha Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">🛍️ Amrutha Store</div>
+
+        <div class="cart">
+            🛒 Secure Checkout
+        </div>
+    </header>
+
+
+    <!-- Checkout -->
+    <main>
+
+        <div class="checkout-page">
+
+            <!-- Customer Details -->
+            <div class="checkout-form">
+
+                <h1>🛒 Checkout</h1>
+
+                <h2>Delivery Details</h2>
+
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                >
+
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+
+                <label>Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                >
+
+
+                <label>Address</label>
+                <textarea
+                    id="address"
+                    rows="4"
+                    placeholder="House No, Street, Area, Landmark"
+                ></textarea>
+
+
+                <label>City</label>
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Enter your city"
+                >
+
+
+                <label>State</label>
+                <input
+                    type="text"
+                    id="state"
+                    placeholder="Enter your state"
+                >
+
+
+                <label>Pincode</label>
+                <input
+                    type="text"
+                    id="pincode"
+                    placeholder="Enter 6 digit pincode"
+                >
+
+
+                <h2>Payment Method</h2>
+
+                <div class="payment-options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked
+                        >
+                        💵 Cash on Delivery
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI"
+                        >
+                        📱 UPI
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card"
+                        >
+                        💳 Card
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="place-order-btn"
+                    onclick="placeOrder()"
+                >
+                    ✅ Place Order
+                </button>
+
+
+                <br><br>
+
+                <a href="index.html">
+                    <button class="back-btn">
+                        ← Continue Shopping
+                    </button>
+                </a>
+
+            </div>
+
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-item">
+
+                    <span>Casual T-Shirt</span>
+
+                    <span>₹499</span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>Quantity</span>
+
+                    <span>1</span>
+
+                </div>
+
+
+                <hr>
+
+
+                <div class="summary-total">
+
+                    <span>Total</span>
+
+                    <span>₹499</span>
+
+                </div>
+
+
+                <div class="secure-box">
+
+                    🔒 Secure Checkout
+
+                    <p>
+                        Your information is safe and secure.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Amrutha Store | CodeAlpha Internship Project
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function placeOrder() {
+
+            const name =
+                document.getElementById("name").value;
+
+            const email =
+                document.getElementById("email").value;
+
+            const phone =
+                document.getElementById("phone").value;
+
+            const address =
+                document.getElementById("address").value;
+
+            const city =
+                document.getElementById("city").value;
+
+            const state =
+                document.getElementById("state").value;
+
+            const pincode =
+                document.getElementById("pincode").value;
+
+
+            if (
+                name === "" ||
+                email === "" ||
+                phone === "" ||
+                address === "" ||
+                city === "" ||
+                state === "" ||
+                pincode === ""
+            ) {
+
+                alert("Please fill all delivery details.");
+
+                return;
+            }
+
+
+            if (pincode.length !== 6) {
+
+                alert("Please enter a valid 6 digit pincode.");
+
+                return;
+            }
+
+
+            alert(
+                "🎉 Order placed successfully!\n\n" +
+                "Thank you, " + name + "!"
+            );
+
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

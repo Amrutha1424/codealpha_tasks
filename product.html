@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details - Amrutha Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="product-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="product-header">
+
+        <a href="index.html" class="product-logo">
+            🛍️ Amrutha Store
+        </a>
+
+        <button
+            class="product-cart-btn"
+            onclick="goToStore()">
+
+            🛒 Cart:
+            <span id="cart-count">0</span>
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="product-main">
+
+        <!-- Back -->
+
+        <a href="index.html" class="back-link">
+            ← Back to Store
+        </a>
+
+
+        <!-- Product Card -->
+
+        <section class="product-details-card">
+
+
+            <!-- ================= IMAGE ================= -->
+
+            <div class="product-visual">
+
+                <div class="product-image-box">
+
+                    <span id="product-image">
+                        👕
+                    </span>
+
+                </div>
+
+                <div class="image-note">
+                    Premium Quality Product
+                </div>
+
+            </div>
+
+
+            <!-- ================= INFORMATION ================= -->
+
+            <div class="product-information">
+
+                <span class="product-category">
+                    AMRUTHA STORE
+                </span>
+
+
+                <h1 id="product-name">
+                    Casual T-Shirt
+                </h1>
+
+
+                <!-- Rating -->
+
+                <div class="product-rating">
+
+                    <span class="stars">
+                        ★★★★★
+                    </span>
+
+                    <strong id="rating-value">
+                        4.5
+                    </strong>
+
+                    <span id="reviews">
+                        (120 Reviews)
+                    </span>
+
+                </div>
+
+
+                <!-- Price -->
+
+                <div class="product-price"
+                     id="product-price">
+
+                    ₹499
+
+                </div>
+
+
+                <!-- Description -->
+
+                <p
+                    class="product-description"
+                    id="product-description">
+
+                    Comfortable cotton T-shirt suitable
+                    for daily wear.
+
+                </p>
+
+
+                <!-- Divider -->
+
+                <div class="product-divider"></div>
+
+
+                <!-- ================= SIZE ================= -->
+
+                <div class="product-option">
+
+                    <div class="option-heading">
+
+                        <strong>
+                            Choose Size
+                        </strong>
+
+                        <span>
+                            Select one
+                        </span>
+
+                    </div>
+
+
+                    <div class="size-options">
+
+                        <button
+                            class="size-btn"
+                            type="button">
+                            S
+                        </button>
+
+                        <button
+                            class="size-btn selected"
+                            type="button">
+                            M
+                        </button>
+
+                        <button
+                            class="size-btn"
+                            type="button">
+                            L
+                        </button>
+
+                        <button
+                            class="size-btn"
+                            type="button">
+                            XL
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= QUANTITY ================= -->
+
+                <div class="product-option">
+
+                    <div class="option-heading">
+
+                        <strong>
+                            Quantity
+                        </strong>
+
+                    </div>
+
+
+                    <div class="quantity-control">
+
+                        <button
+                            type="button"
+                            onclick="decreaseQuantity()">
+                            −
+                        </button>
+
+                        <span id="quantity">
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            onclick="increaseQuantity()">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= ACTIONS ================= -->
+
+                <div class="product-actions">
+
+                    <button
+                        class="add-product-btn"
+                        id="add-button">
+
+                        🛒 Add to Cart
+
+                    </button>
+
+
+                    <button
+                        class="wishlist-product-btn"
+                        id="wishlist-button"
+                        title="Add to Wishlist">
+
+                        ♡
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================= DELIVERY ================= -->
+
+                <div class="delivery-features">
+
+                    <div class="delivery-feature">
+
+                        <span>🚚</span>
+
+                        <div>
+                            <strong>
+                                Free Delivery
+                            </strong>
+
+                            <small>
+                                On all orders
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-feature">
+
+                        <span>↩️</span>
+
+                        <div>
+                            <strong>
+                                7 Days Replacement
+                            </strong>
+
+                            <small>
+                                Easy replacement
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-feature">
+
+                        <span>🔒</span>
+
+                        <div>
+                            <strong>
+                                Secure Payment
+                            </strong>
+
+                            <small>
+                                100% secure checkout
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DETAILS ================= -->
+
+        <section class="product-extra-details">
+
+            <h2>
+                Product Details
+            </h2>
+
+            <p>
+                Everything you need to know about this product.
+            </p>
+
+
+            <div
+                class="features-grid"
+                id="features-list">
+
+                <!-- JavaScript will add features -->
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="product-footer">
+
+        <div class="footer-logo">
+            🛍️ Amrutha Store
+        </div>
+
+        <p>
+            Quality products. Affordable prices.
+        </p>
+
+        <p>
+            © 2026 Amrutha Store | CodeAlpha Internship Project
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // ==========================================
+        // PRODUCT DATA
+        // ==========================================
+
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const product =
+            urlParams.get("product");
+
+
+        const products = {
+
+            tshirt: {
+
+                name: "Casual T-Shirt",
+
+                image: "👕",
+
+                price: 499,
+
+                rating: "4.5",
+
+                reviews: "120 Reviews",
+
+                description:
+                    "Comfortable cotton T-shirt suitable for daily wear.",
+
+                features: [
+                    "100% Cotton",
+                    "Soft and comfortable",
+                    "Stylish casual design",
+                    "Suitable for daily wear"
+                ]
+
+            },
+
+
+            shoes: {
+
+                name: "Running Shoes",
+
+                image: "👟",
+
+                price: 999,
+
+                rating: "4.7",
+
+                reviews: "95 Reviews",
+
+                description:
+                    "Lightweight running shoes designed for comfort and daily exercise.",
+
+                features: [
+                    "Lightweight design",
+                    "Comfortable sole",
+                    "Good grip",
+                    "Suitable for running"
+                ]
+
+            },
+
+
+            bag: {
+
+                name: "College Backpack",
+
+                image: "🎒",
+
+                price: 699,
+
+                rating: "4.4",
+
+                reviews: "80 Reviews",
+
+                description:
+                    "Stylish and durable backpack perfect for college and travel.",
+
+                features: [
+                    "Spacious storage",
+                    "Durable material",
+                    "Comfortable shoulder straps",
+                    "Perfect for college"
+                ]
+
+            },
+
+
+            watch: {
+
+                name: "Smart Watch",
+
+                image: "⌚",
+
+                price: 1499,
+
+                rating: "4.6",
+
+                reviews: "150 Reviews",
+
+                description:
+                    "Modern smart watch with a stylish digital design.",
+
+                features: [
+                    "Modern design",
+                    "Digital display",
+                    "Comfortable strap",
+                    "Suitable for everyday use"
+                ]
+
+            }
+
+        };
+
+
+        const selectedProduct =
+            products[product] || products.tshirt;
+
+
+        // ==========================================
+        // DISPLAY PRODUCT
+        // ==========================================
+
+
+        document.getElementById(
+            "product-image"
+        ).textContent =
+            selectedProduct.image;
+
+
+        document.getElementById(
+            "product-name"
+        ).textContent =
+            selectedProduct.name;
+
+
+        document.getElementById(
+            "product-price"
+        ).textContent =
+            "₹" + selectedProduct.price;
+
+
+        document.getElementById(
+            "product-description"
+        ).textContent =
+            selectedProduct.description;
+
+
+        document.getElementById(
+            "rating-value"
+        ).textContent =
+            selectedProduct.rating;
+
+
+        document.getElementById(
+            "reviews"
+        ).textContent =
+            "(" + selectedProduct.reviews + ")";
+
+
+        // ==========================================
+        // FEATURES
+        // ==========================================
+
+
+        const featuresList =
+            document.getElementById(
+                "features-list"
+            );
+
+
+        selectedProduct.features.forEach(
+            function(feature) {
+
+                const featureBox =
+                    document.createElement("div");
+
+
+                featureBox.className =
+                    "feature-item";
+
+
+                featureBox.innerHTML = `
+                    
+                    <span class="feature-check">
+                        ✓
+                    </span>
+
+                    <span>
+                        ${feature}
+                    </span>
+
+                `;
+
+
+                featuresList.appendChild(
+                    featureBox
+                );
+
+            }
+        );
+
+
+        // ==========================================
+        // QUANTITY
+        // ==========================================
+
+
+        let quantity = 1;
+
+
+        function increaseQuantity() {
+
+            if (quantity < 10) {
+
+                quantity++;
+
+            }
+
+
+            document.getElementById(
+                "quantity"
+            ).textContent = quantity;
+
+        }
+
+
+        function decreaseQuantity() {
+
+            if (quantity > 1) {
+
+                quantity--;
+
+            }
+
+
+            document.getElementById(
+                "quantity"
+            ).textContent = quantity;
+
+        }
+
+
+        // ==========================================
+        // SIZE
+        // ==========================================
+
+
+        const sizeButtons =
+            document.querySelectorAll(
+                ".size-btn"
+            );
+
+
+        sizeButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        sizeButtons.forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "selected"
+                                );
+
+                            }
+                        );
+
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        // ==========================================
+        // ADD TO CART
+        // ==========================================
+
+
+        document.getElementById(
+            "add-button"
+        ).addEventListener(
+            "click",
+            function() {
+
+                let cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "amruthaCart"
+                        )
+                    ) || [];
+
+
+                const selectedSize =
+                    document.querySelector(
+                        ".size-btn.selected"
+                    );
+
+
+                const size =
+                    selectedSize
+                        ? selectedSize.textContent
+                        : "M";
+
+
+                const existing =
+                    cart.find(
+                        item =>
+                            item.name ===
+                            selectedProduct.name &&
+                            item.size === size
+                    );
+
+
+                if (existing) {
+
+                    existing.quantity += quantity;
+
+                } else {
+
+                    cart.push({
+
+                        name:
+                            selectedProduct.name,
+
+                        price:
+                            selectedProduct.price,
+
+                        quantity:
+                            quantity,
+
+                        size:
+                            size
+
+                    });
+
+                }
+
+
+                localStorage.setItem(
+                    "amruthaCart",
+                    JSON.stringify(cart)
+                );
+
+
+                updateCartCount();
+
+
+                alert(
+                    selectedProduct.name +
+                    " added to cart! 🛒"
+                );
+
+            }
+        );
+
+
+        // ==========================================
+        // WISHLIST
+        // ==========================================
+
+
+        document.getElementById(
+            "wishlist-button"
+        ).addEventListener(
+            "click",
+            function() {
+
+                if (
+                    this.classList.contains(
+                        "liked"
+                    )
+                ) {
+
+                    this.classList.remove(
+                        "liked"
+                    );
+
+                    this.textContent = "♡";
+
+                } else {
+
+                    this.classList.add(
+                        "liked"
+                    );
+
+                    this.textContent = "♥";
+
+                    alert(
+                        selectedProduct.name +
+                        " added to wishlist ❤️"
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ==========================================
+        // CART COUNT
+        // ==========================================
+
+
+        function updateCartCount() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "amruthaCart"
+                    )
+                ) || [];
+
+
+            const count =
+                cart.reduce(
+                    function(total, item) {
+
+                        return total +
+                            item.quantity;
+
+                    },
+                    0
+                );
+
+
+            document.getElementById(
+                "cart-count"
+            ).textContent = count;
+
+        }
+
+
+        updateCartCount();
+
+
+        // ==========================================
+        // GO TO STORE
+        // ==========================================
+
+
+        function goToStore() {
+
+            window.location.href =
+                "index.html#shopping-cart";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
